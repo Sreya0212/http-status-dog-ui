@@ -1,0 +1,40 @@
+<div class="container" style="margin-top: 40px;"> 
+    <!-- Add a link to get the StatusCode present in the List -->
+    <a routerLink="/list" class="btn btn-success btn-sm mb-2 text-decoration-none font-monospace" style="float: right;
+        font-size: x-small; font-weight: bold;"
+    >
+        Show List
+    </a>
+    
+    <!-- Button to remvoe cookie -->
+    <div class="text-center font-monospace fw-bold">   
+        <span class="bi bi-person-check-fill"></span> {{UserName}}  <button (click)="signOut()" class="btn btn-outline-danger btn-sm fw-bold"><span class="bi bi-chat-right"></span> Sign Out</button>
+    </div>
+    
+    <!--Add a textbox for searching -->
+    <form [formGroup]="frmSearch" (submit)="handleSearch(frmSearch.value)">
+        <div class="input-group input-group-sm" style="width: 34%;">
+            <input formControlName="StatusCode" name="StatusCode" type="text" style="margin-left: 10px;" 
+                class="form-control font-monospace fw-bold" placeholder="Enter Status Code[e.g. 1xx, 2xx]"
+            >
+            <div class="input-group-text">
+                <button [disabled]="StatusCode.invalid" class="bi bi-search btn btn-primary btn-sm" style="font-size: x-small;"></button>
+            </div>
+        </div>
+    </form> 
+
+    <div class="row mt-2">
+        <div *ngFor="let item of dogs" class="col-12 col-lg-4 col-md-6">
+            <div class="card p-2 m-2">
+                <img [src]="item.image" class="card-img-top">
+                <div class="card-footer text-center m-2 p-2">
+                    <!-- On this button click add that particular status code card to a list
+                    Pass the statusCode as the arg of the func to add that particular card -->
+                    <button [id]="item.statusCode" (click)="addToList(item.statusCode)" class="btn btn-outline-dark font-monospace fw-bold" style="font-size: x-small;">
+                        <span class="bi bi-bookmark"></span> Save to List
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

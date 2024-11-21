@@ -1,0 +1,28 @@
+
+
+<div class="container d-flex justify-content-center align-items-center font-monospace" style="margin-top: 40px;">
+    <div class="card p-4 shadow" style="max-width: 320px; width: 100%;">
+        <h3 class="text-center mb-4"><span class="bi bi-person-fill"></span> User Login</h3>
+        <form [formGroup]="frmLogin" (submit)="handleSubmit(frmLogin.value)">
+            <div class="mb-3">
+                <label for="Username" class="form-label fw-bold">Username</label>
+                <input formControlName="Username" type="text" class="form-control" id="Username" name="Username" placeholder="Enter your username">
+            </div>
+            <div class="mb-3">
+                <label for="Password" class="form-label fw-bold">Password</label>
+                <input formControlName="Password" name="Password" type="password" class="form-control" id="Password" placeholder="Enter your password">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-success btn-sm w-50 fw-bold">Login</button>
+            </div>
+
+            <!-- Give a link to Register Component -->
+            <div class="text-center font-monospace fw-bold text-secondary mt-2" 
+                style="font-size: 15px;"
+            >
+                Don't have an account? 
+            <a class="text-decoration-none" routerLink="/register">Sign up</a>
+        </div>
+        </form>
+    </div>
+</div>
